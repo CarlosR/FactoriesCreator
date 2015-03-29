@@ -25,6 +25,7 @@
                 <StackPanel Grid.Column="0" Margin="0,50,0,0">
                     <sdk:Label Content="Class name:"/>
                     <TextBox Width="auto"/>
+                    <sdk:DataGrid Height="20"/>
                 </StackPanel>
 
                 <Grid x:Name="QueryGrid" Grid.Column="1">
