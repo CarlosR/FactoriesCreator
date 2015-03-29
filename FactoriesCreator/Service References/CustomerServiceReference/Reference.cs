@@ -22,6 +22,21 @@ namespace FactoriesCreator.CustomerServiceReference {
         System.IAsyncResult BeginGetSqlString(System.AsyncCallback callback, object asyncState);
         
         string EndGetSqlString(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/Acciones", ReplyAction="urn:CustomerService/AccionesResponse")]
+        System.IAsyncResult BeginAcciones(string sqlQuery, System.AsyncCallback callback, object asyncState);
+        
+        string EndAcciones(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/Consulta", ReplyAction="urn:CustomerService/ConsultaResponse")]
+        System.IAsyncResult BeginConsulta(string sqlQuery, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<string> EndConsulta(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/Select", ReplyAction="urn:CustomerService/SelectResponse")]
+        System.IAsyncResult BeginSelect(System.AsyncCallback callback, object asyncState);
+        
+        string EndSelect(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,6 +64,63 @@ namespace FactoriesCreator.CustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AccionesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public AccionesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConsultaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ConsultaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<string> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<string>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SelectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public SelectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class CustomerServiceClient : System.ServiceModel.ClientBase<FactoriesCreator.CustomerServiceReference.CustomerService>, FactoriesCreator.CustomerServiceReference.CustomerService {
         
         private BeginOperationDelegate onBeginGetSqlStringDelegate;
@@ -56,6 +128,24 @@ namespace FactoriesCreator.CustomerServiceReference {
         private EndOperationDelegate onEndGetSqlStringDelegate;
         
         private System.Threading.SendOrPostCallback onGetSqlStringCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginAccionesDelegate;
+        
+        private EndOperationDelegate onEndAccionesDelegate;
+        
+        private System.Threading.SendOrPostCallback onAccionesCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginConsultaDelegate;
+        
+        private EndOperationDelegate onEndConsultaDelegate;
+        
+        private System.Threading.SendOrPostCallback onConsultaCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSelectDelegate;
+        
+        private EndOperationDelegate onEndSelectDelegate;
+        
+        private System.Threading.SendOrPostCallback onSelectCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -112,6 +202,12 @@ namespace FactoriesCreator.CustomerServiceReference {
         
         public event System.EventHandler<GetSqlStringCompletedEventArgs> GetSqlStringCompleted;
         
+        public event System.EventHandler<AccionesCompletedEventArgs> AccionesCompleted;
+        
+        public event System.EventHandler<ConsultaCompletedEventArgs> ConsultaCompleted;
+        
+        public event System.EventHandler<SelectCompletedEventArgs> SelectCompleted;
+        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
@@ -158,6 +254,142 @@ namespace FactoriesCreator.CustomerServiceReference {
                 this.onGetSqlStringCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSqlStringCompleted);
             }
             base.InvokeAsync(this.onBeginGetSqlStringDelegate, null, this.onEndGetSqlStringDelegate, this.onGetSqlStringCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult FactoriesCreator.CustomerServiceReference.CustomerService.BeginAcciones(string sqlQuery, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginAcciones(sqlQuery, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string FactoriesCreator.CustomerServiceReference.CustomerService.EndAcciones(System.IAsyncResult result) {
+            return base.Channel.EndAcciones(result);
+        }
+        
+        private System.IAsyncResult OnBeginAcciones(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string sqlQuery = ((string)(inValues[0]));
+            return ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).BeginAcciones(sqlQuery, callback, asyncState);
+        }
+        
+        private object[] OnEndAcciones(System.IAsyncResult result) {
+            string retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndAcciones(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnAccionesCompleted(object state) {
+            if ((this.AccionesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.AccionesCompleted(this, new AccionesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void AccionesAsync(string sqlQuery) {
+            this.AccionesAsync(sqlQuery, null);
+        }
+        
+        public void AccionesAsync(string sqlQuery, object userState) {
+            if ((this.onBeginAccionesDelegate == null)) {
+                this.onBeginAccionesDelegate = new BeginOperationDelegate(this.OnBeginAcciones);
+            }
+            if ((this.onEndAccionesDelegate == null)) {
+                this.onEndAccionesDelegate = new EndOperationDelegate(this.OnEndAcciones);
+            }
+            if ((this.onAccionesCompletedDelegate == null)) {
+                this.onAccionesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAccionesCompleted);
+            }
+            base.InvokeAsync(this.onBeginAccionesDelegate, new object[] {
+                        sqlQuery}, this.onEndAccionesDelegate, this.onAccionesCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult FactoriesCreator.CustomerServiceReference.CustomerService.BeginConsulta(string sqlQuery, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginConsulta(sqlQuery, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.ObjectModel.ObservableCollection<string> FactoriesCreator.CustomerServiceReference.CustomerService.EndConsulta(System.IAsyncResult result) {
+            return base.Channel.EndConsulta(result);
+        }
+        
+        private System.IAsyncResult OnBeginConsulta(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string sqlQuery = ((string)(inValues[0]));
+            return ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).BeginConsulta(sqlQuery, callback, asyncState);
+        }
+        
+        private object[] OnEndConsulta(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<string> retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndConsulta(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnConsultaCompleted(object state) {
+            if ((this.ConsultaCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ConsultaCompleted(this, new ConsultaCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ConsultaAsync(string sqlQuery) {
+            this.ConsultaAsync(sqlQuery, null);
+        }
+        
+        public void ConsultaAsync(string sqlQuery, object userState) {
+            if ((this.onBeginConsultaDelegate == null)) {
+                this.onBeginConsultaDelegate = new BeginOperationDelegate(this.OnBeginConsulta);
+            }
+            if ((this.onEndConsultaDelegate == null)) {
+                this.onEndConsultaDelegate = new EndOperationDelegate(this.OnEndConsulta);
+            }
+            if ((this.onConsultaCompletedDelegate == null)) {
+                this.onConsultaCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConsultaCompleted);
+            }
+            base.InvokeAsync(this.onBeginConsultaDelegate, new object[] {
+                        sqlQuery}, this.onEndConsultaDelegate, this.onConsultaCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult FactoriesCreator.CustomerServiceReference.CustomerService.BeginSelect(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSelect(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string FactoriesCreator.CustomerServiceReference.CustomerService.EndSelect(System.IAsyncResult result) {
+            return base.Channel.EndSelect(result);
+        }
+        
+        private System.IAsyncResult OnBeginSelect(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).BeginSelect(callback, asyncState);
+        }
+        
+        private object[] OnEndSelect(System.IAsyncResult result) {
+            string retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndSelect(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnSelectCompleted(object state) {
+            if ((this.SelectCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SelectCompleted(this, new SelectCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SelectAsync() {
+            this.SelectAsync(null);
+        }
+        
+        public void SelectAsync(object userState) {
+            if ((this.onBeginSelectDelegate == null)) {
+                this.onBeginSelectDelegate = new BeginOperationDelegate(this.OnBeginSelect);
+            }
+            if ((this.onEndSelectDelegate == null)) {
+                this.onEndSelectDelegate = new EndOperationDelegate(this.OnEndSelect);
+            }
+            if ((this.onSelectCompletedDelegate == null)) {
+                this.onSelectCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSelectCompleted);
+            }
+            base.InvokeAsync(this.onBeginSelectDelegate, null, this.onEndSelectDelegate, this.onSelectCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -245,6 +477,44 @@ namespace FactoriesCreator.CustomerServiceReference {
             public string EndGetSqlString(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 string _result = ((string)(base.EndInvoke("GetSqlString", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginAcciones(string sqlQuery, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = sqlQuery;
+                System.IAsyncResult _result = base.BeginInvoke("Acciones", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndAcciones(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("Acciones", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginConsulta(string sqlQuery, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = sqlQuery;
+                System.IAsyncResult _result = base.BeginInvoke("Consulta", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.ObjectModel.ObservableCollection<string> EndConsulta(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.ObjectModel.ObservableCollection<string> _result = ((System.Collections.ObjectModel.ObservableCollection<string>)(base.EndInvoke("Consulta", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginSelect(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("Select", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndSelect(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("Select", _args, result)));
                 return _result;
             }
         }

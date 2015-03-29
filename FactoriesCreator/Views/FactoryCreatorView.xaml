@@ -38,7 +38,7 @@
                     </Grid.RowDefinitions>
                     
                         <sdk:Label Content="Query: " Width="auto" Grid.Row="0" VerticalAlignment="Top"/>
-                        <TextBox Grid.Row="0" Margin="0,17,0,0"/>
+                        <TextBox Grid.Row="0" Margin="0,17,0,0" Text="{Binding Resultado, Mode=TwoWay}"/>
 
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -48,7 +48,7 @@
                         <StackPanel Orientation="Horizontal" Grid.Row="0" >
                             <Button Content="Data Preview" Command="{Binding ComandoEjecutarTemporal, Mode=TwoWay}"/>
                             <TextBlock Width="10"/>
-                            <Button Content="Export to Excel"/>
+                            <Button Content="Export to Excel" Command="{Binding ComandoQuery,Mode=TwoWay}"/>
                         </StackPanel>
                         
                         <sdk:DataGrid Grid.Row="1"/>

@@ -1,11 +1,6 @@
 ﻿<configuration>
     <system.serviceModel>
         <bindings>
-            <basicHttpBinding>
-                <binding name="Service1Soap" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
-                    <security mode="None" />
-                </binding>
-            </basicHttpBinding>
             <customBinding>
                 <binding name="CustomBinding_CustomerService">
                     <binaryMessageEncoding />
@@ -14,9 +9,6 @@
             </customBinding>
         </bindings>
         <client>
-            <endpoint address="http://localhost:2772/SqlService.asmx" binding="basicHttpBinding"
-                bindingConfiguration="Service1Soap" contract="SqlServiceReference.Service1Soap"
-                name="Service1Soap" />
             <endpoint address="../CustomerService.svc" binding="customBinding"
                 bindingConfiguration="CustomBinding_CustomerService" contract="CustomerServiceReference.CustomerService"
                 name="CustomBinding_CustomerService" />
