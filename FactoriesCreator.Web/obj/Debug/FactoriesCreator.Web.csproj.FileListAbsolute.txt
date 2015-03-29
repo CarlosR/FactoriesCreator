@@ -1,5 +1,0 @@
-C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator.Web\bin\FactoriesCreator.Web.dll
-C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator.Web\bin\FactoriesCreator.Web.pdb
-C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator.Web\obj\Debug\FactoriesCreator.Web.dll
-C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator.Web\obj\Debug\FactoriesCreator.Web.pdb
-C:\Users\Carlos\documents\visual studio 2012\Projects\FactoriesCreator\FactoriesCreator.Web\obj\Debug\FactoriesCreator.Web.csprojResolveAssemblyReference.cache

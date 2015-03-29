@@ -1,5 +1,0 @@
-C:\Users\Carlos\documents\visual studio 2012\Projects\FactoriesCreator\FactoriesCreator.Services\bin\FactoriesCreator.Services.dll
-C:\Users\Carlos\documents\visual studio 2012\Projects\FactoriesCreator\FactoriesCreator.Services\bin\FactoriesCreator.Services.pdb
-C:\Users\Carlos\documents\visual studio 2012\Projects\FactoriesCreator\FactoriesCreator.Services\obj\Debug\FactoriesCreator.Services.csprojResolveAssemblyReference.cache
-C:\Users\Carlos\documents\visual studio 2012\Projects\FactoriesCreator\FactoriesCreator.Services\obj\Debug\FactoriesCreator.Services.dll
-C:\Users\Carlos\documents\visual studio 2012\Projects\FactoriesCreator\FactoriesCreator.Services\obj\Debug\FactoriesCreator.Services.pdb
