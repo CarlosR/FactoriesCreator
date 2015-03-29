@@ -87,7 +87,6 @@ C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\Factories
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\Bin\Debug\vi\System.Windows.Controls.Data.Input.resources.dll
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\Bin\Debug\zh-Hans\System.Windows.Controls.Data.Input.resources.dll
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\Bin\Debug\zh-Hant\System.Windows.Controls.Data.Input.resources.dll
-C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\obj\Debug\FactoriesCreator.csprojResolveAssemblyReference.cache
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\obj\Debug\App.g.cs
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\obj\Debug\MainPage.g.cs
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\obj\Debug\FactoriesCreator.g.resources
