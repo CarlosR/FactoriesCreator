@@ -19,7 +19,6 @@ namespace FactoriesCreator.Web
         public string GetSqlString()
         {
             return "Data Source=ECRUZJ14-PC\\SRVCRUZ01;Initial Catalog=Siscohdyl;Persist Security Info=True;User ID=sa;Password=Mantenimiento";
-          
         }
 
         // Add more operations here and mark them with [OperationContract]
@@ -36,7 +35,7 @@ namespace FactoriesCreator.Web
         [OperationContract]
         public string Acciones(string sqlQuery)
         {
-            string resultado = "True";
+            string resultado = "true";
 
             try
             {
@@ -78,7 +77,7 @@ namespace FactoriesCreator.Web
                 da = new SqlDataAdapter(sqlQuery, cn);
                 da.Fill(resultado); // LLena el Data Table con el resultado
 
-                lista = resultado.AsEnumerable().Select(x => x.Field<string>("idArticulo")).ToList();
+                lista = resultado.AsEnumerable().Select(x => x.Field<string>("Descripcion")).ToList();
 
                 //List<DataRow> list = resultado.AsEnumerable().ToList();
             }
@@ -100,7 +99,7 @@ namespace FactoriesCreator.Web
         {
             string resultado = "";
 
-            string querySelect = "select articu from Art_Articulos where idArticulo = '025'";
+            string querySelect = "select descripcion from Inv_DeptoUbicacion where idDepartamento = '5'";
 
             try
             {
