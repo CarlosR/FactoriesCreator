@@ -1,0 +1,11 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="FactoriesCreator" EntryPointType="FactoriesCreator.App" RuntimeVersion="5.0.61118.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="FactoriesCreator" Source="FactoriesCreator.dll" />
+    <AssemblyPart x:Name="GalaSoft.MvvmLight" Source="GalaSoft.MvvmLight.dll" />
+    <AssemblyPart x:Name="GalaSoft.MvvmLight.Extras" Source="GalaSoft.MvvmLight.Extras.dll" />
+    <AssemblyPart x:Name="Microsoft.Practices.ServiceLocation" Source="Microsoft.Practices.ServiceLocation.dll" />
+    <AssemblyPart x:Name="System.ComponentModel.DataAnnotations" Source="System.ComponentModel.DataAnnotations.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Data.Input" Source="System.Windows.Controls.Data.Input.dll" />
+    <AssemblyPart x:Name="System.Windows.Interactivity" Source="System.Windows.Interactivity.dll" />
+  </Deployment.Parts>
+</Deployment>
