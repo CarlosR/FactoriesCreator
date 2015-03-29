@@ -1,0 +1,13 @@
+﻿<xapCache source="C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\Bin\Debug\FactoriesCreator.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="3/28/2015 11:42:58 PM">
+  <file source="C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\obj\Debug\FactoriesCreator.dll" archivePath="FactoriesCreator.dll" lastWriteTime="3/28/2015 11:42:56 PM" />
+  <file source="C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\packages\MvvmLightLibs.5.1.1.0\lib\SL5\GalaSoft.MvvmLight.dll" archivePath="GalaSoft.MvvmLight.dll" lastWriteTime="3/28/2015 7:52:59 PM" />
+  <file source="C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\packages\MvvmLightLibs.5.1.1.0\lib\SL5\GalaSoft.MvvmLight.Extras.dll" archivePath="GalaSoft.MvvmLight.Extras.dll" lastWriteTime="3/28/2015 7:52:59 PM" />
+  <file source="C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll" archivePath="Microsoft.Practices.ServiceLocation.dll" lastWriteTime="3/28/2015 7:52:59 PM" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.ComponentModel.DataAnnotations.dll" archivePath="System.ComponentModel.DataAnnotations.dll" lastWriteTime="11/18/2011 5:40:20 PM" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.dll" archivePath="System.Windows.Controls.Data.dll" lastWriteTime="11/18/2011 5:40:20 PM" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.Input.dll" archivePath="System.Windows.Controls.Data.Input.dll" lastWriteTime="11/18/2011 5:40:20 PM" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Data.dll" archivePath="System.Windows.Data.dll" lastWriteTime="11/18/2011 5:40:20 PM" />
+  <file source="C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\packages\MvvmLightLibs.5.1.1.0\lib\SL5\System.Windows.Interactivity.dll" archivePath="System.Windows.Interactivity.dll" lastWriteTime="3/28/2015 7:52:59 PM" />
+  <file source="C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\ServiceReferences.ClientConfig" archivePath="ServiceReferences.ClientConfig" lastWriteTime="3/28/2015 9:20:33 PM" />
+  <file source="C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="3/28/2015 11:40:03 PM" />
+</xapCache>
