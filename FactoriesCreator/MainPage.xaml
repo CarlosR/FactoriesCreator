@@ -7,7 +7,6 @@
     mc:Ignorable="d"
     d:DesignHeight="500" d:DesignWidth="800">
 
-
     <Grid x:Name="LayoutRoot" Background="White">
         <sdk:Label HorizontalAlignment="Left" Height="50" Content="Factories Creator" VerticalAlignment="Top" FontSize="30"/>
 
@@ -16,6 +15,25 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1.2*"/>
             </Grid.RowDefinitions>
+
+            <Grid x:Name="UpperGrid" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0,50,0,0">
+                    <sdk:Label Content="Class name:"/>
+                    <TextBox Width="auto"/>
+                </StackPanel>
+
+                <Grid x:Name="QueryGrid" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1.2*"/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Grid>
         </Grid>
 
     </Grid>

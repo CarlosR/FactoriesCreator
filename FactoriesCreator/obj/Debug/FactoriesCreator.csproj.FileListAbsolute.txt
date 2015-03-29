@@ -103,3 +103,4 @@ C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\Factories
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\Bin\Debug\GalaSoft.MvvmLight.Extras.xml
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\Bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator\Bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Carlos\documents\visual studio 2012\Projects\FactoriesCreator\FactoriesCreator\obj\Debug\FactoriesCreator.csprojResolveAssemblyReference.cache
