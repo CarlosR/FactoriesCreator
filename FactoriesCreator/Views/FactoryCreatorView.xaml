@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
     mc:Ignorable="d"
+    DataContext="{Binding FactoryCreatorModel, Source={StaticResource ResourceKey=Locator}}"
     d:DesignHeight="500" d:DesignWidth="800">
 
     <Grid x:Name="LayoutRoot" Background="White">
@@ -26,7 +27,7 @@
 
                 <StackPanel Grid.Column="0" >
                     <sdk:Label Content="Class name:"/>
-                    <TextBox Width="auto"/>
+                    <TextBox Width="auto" Text="{Binding PropQueryString, Mode=TwoWay}"/>
                 </StackPanel>
                 <sdk:DataGrid Margin="0,45,0,0" Grid.Column="0"/>
 
@@ -45,7 +46,7 @@
                             <RowDefinition Height="86*"/>
                         </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal" Grid.Row="0" >
-                            <Button Content="Data Preview"/>
+                            <Button Content="Data Preview" Command="{Binding ComandoEjecutarTemporal, Mode=TwoWay}"/>
                             <TextBlock Width="10"/>
                             <Button Content="Export to Excel"/>
                         </StackPanel>

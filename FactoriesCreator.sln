@@ -3,12 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoriesCreator", "FactoriesCreator\FactoriesCreator.csproj", "{B1C18FCA-C1B9-468C-891D-5F348DB85839}"
 	ProjectSection(ProjectDependencies) = postProject
-		{2D6B2517-D61B-4EB1-A61A-126BCA7930D8} = {2D6B2517-D61B-4EB1-A61A-126BCA7930D8}
+		{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D} = {7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoriesCreator.Web", "FactoriesCreator.Web\FactoriesCreator.Web.csproj", "{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoriesCreator.Services", "FactoriesCreator.Services\FactoriesCreator.Services.csproj", "{2D6B2517-D61B-4EB1-A61A-126BCA7930D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +22,6 @@ Global
 		{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D6B2517-D61B-4EB1-A61A-126BCA7930D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D6B2517-D61B-4EB1-A61A-126BCA7930D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D6B2517-D61B-4EB1-A61A-126BCA7930D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D6B2517-D61B-4EB1-A61A-126BCA7930D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
