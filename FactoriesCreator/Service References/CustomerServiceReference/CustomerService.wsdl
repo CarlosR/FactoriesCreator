@@ -1,52 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsdl:types>
-    <xsd:schema targetNamespace="/Imports">
-      <xsd:import schemaLocation="http://localhost:1278/CustomerService.svc?xsd=xsd0" />
-      <xsd:import schemaLocation="http://localhost:1278/CustomerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:1278/CustomerService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-    </xsd:schema>
-  </wsdl:types>
-  <wsdl:message name="CustomerService_GetSqlString_InputMessage">
-    <wsdl:part name="parameters" element="GetSqlString" />
-  </wsdl:message>
-  <wsdl:message name="CustomerService_GetSqlString_OutputMessage">
-    <wsdl:part name="parameters" element="GetSqlStringResponse" />
-  </wsdl:message>
-  <wsdl:message name="CustomerService_Acciones_InputMessage">
-    <wsdl:part name="parameters" element="Acciones" />
-  </wsdl:message>
-  <wsdl:message name="CustomerService_Acciones_OutputMessage">
-    <wsdl:part name="parameters" element="AccionesResponse" />
-  </wsdl:message>
-  <wsdl:message name="CustomerService_Consulta_InputMessage">
-    <wsdl:part name="parameters" element="Consulta" />
-  </wsdl:message>
-  <wsdl:message name="CustomerService_Consulta_OutputMessage">
-    <wsdl:part name="parameters" element="ConsultaResponse" />
-  </wsdl:message>
-  <wsdl:message name="CustomerService_Select_InputMessage">
-    <wsdl:part name="parameters" element="Select" />
-  </wsdl:message>
-  <wsdl:message name="CustomerService_Select_OutputMessage">
-    <wsdl:part name="parameters" element="SelectResponse" />
-  </wsdl:message>
-  <wsdl:portType name="CustomerService">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CustomerService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="CustomBinding_CustomerService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="" location="http://localhost:1278/CustomerService.svc?wsdl=wsdl0" />
+  <wsdl:types />
+  <wsdl:binding name="CustomBinding_CustomerService" type="CustomerService">
+    <wsp:PolicyReference URI="#CustomBinding_CustomerService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetSqlString">
-      <wsdl:input wsaw:Action="urn:CustomerService/GetSqlString" message="CustomerService_GetSqlString_InputMessage" />
-      <wsdl:output wsaw:Action="urn:CustomerService/GetSqlStringResponse" message="CustomerService_GetSqlString_OutputMessage" />
+      <soap12:operation soapAction="urn:CustomerService/GetSqlString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Acciones">
-      <wsdl:input wsaw:Action="urn:CustomerService/Acciones" message="CustomerService_Acciones_InputMessage" />
-      <wsdl:output wsaw:Action="urn:CustomerService/AccionesResponse" message="CustomerService_Acciones_OutputMessage" />
+      <soap12:operation soapAction="urn:CustomerService/Acciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Consulta">
-      <wsdl:input wsaw:Action="urn:CustomerService/Consulta" message="CustomerService_Consulta_InputMessage" />
-      <wsdl:output wsaw:Action="urn:CustomerService/ConsultaResponse" message="CustomerService_Consulta_OutputMessage" />
+      <soap12:operation soapAction="urn:CustomerService/Consulta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Select">
-      <wsdl:input wsaw:Action="urn:CustomerService/Select" message="CustomerService_Select_InputMessage" />
-      <wsdl:output wsaw:Action="urn:CustomerService/SelectResponse" message="CustomerService_Select_OutputMessage" />
+      <soap12:operation soapAction="urn:CustomerService/Select" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
-  </wsdl:portType>
+  </wsdl:binding>
+  <wsdl:service name="CustomerService">
+    <wsdl:port name="CustomBinding_CustomerService" binding="tns:CustomBinding_CustomerService">
+      <soap12:address location="http://localhost:1278/CustomerService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:1278/CustomerService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
 </wsdl:definitions>

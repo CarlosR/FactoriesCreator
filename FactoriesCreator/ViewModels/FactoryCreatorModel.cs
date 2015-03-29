@@ -14,6 +14,8 @@ using System.Collections.ObjectModel;
 using System.ServiceModel;
 using GetSqlStringCompletedEventArgs = FactoriesCreator.CustomerServiceReference.GetSqlStringCompletedEventArgs;
 
+using System.Collections.Generic;
+
 namespace FactoriesCreator.ViewModels
 {
     public class FactoryCreatorModel : BaseINPC
@@ -40,7 +42,7 @@ namespace FactoriesCreator.ViewModels
 
         void Proxy_SelectCompleted(object sender, SelectCompletedEventArgs e)
         {
-            Resultado = e.Result;
+            Resultado = new ObservableCollection<string>(e.Result);
         }
 
         #endregion
@@ -63,7 +65,7 @@ namespace FactoriesCreator.ViewModels
 
         private string _queryString;
 
-        public string Resultado
+        public ObservableCollection<string> Resultado
         {
             get { return _resultado; }
             set
@@ -76,7 +78,7 @@ namespace FactoriesCreator.ViewModels
             }
         }
 
-        private string _resultado;
+        private ObservableCollection<string> _resultado;
 
         #endregion
 

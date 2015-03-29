@@ -129,6 +129,9 @@
     <None Include="Service References\CustomerServiceReference\CustomerService.disco" />
     <None Include="Service References\CustomerServiceReference\configuration91.svcinfo" />
     <None Include="Service References\CustomerServiceReference\configuration.svcinfo" />
+    <None Include="Service References\CustomerServiceReference\CustomerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\CustomerServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -140,9 +143,6 @@
     </None>
     <None Include="Service References\CustomerServiceReference\CustomerService1.wsdl" />
     <None Include="Service References\CustomerServiceReference\CustomerService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CustomerServiceReference\CustomerService2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

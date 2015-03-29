@@ -95,15 +95,15 @@ namespace FactoriesCreator.Web
         }
 
         [OperationContract]
-        public string Select()
+        public List<string> Select()
         {
-            string resultado = "";
+            List<string> resultado = new List<string>();
 
             string querySelect = "select descripcion from Inv_DeptoUbicacion where idDepartamento = '5'";
 
             try
             {
-                resultado = Acciones(querySelect);
+                resultado = Consulta(querySelect);
             }
 
             catch (Exception Error)
