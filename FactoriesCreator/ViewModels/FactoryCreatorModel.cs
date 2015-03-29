@@ -11,7 +11,6 @@ using System.Windows.Shapes;
 using FactoriesCreator.CustomerServiceReference;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
-using FactoriesCreator.SqlServiceReference;
 using System.ServiceModel;
 using GetSqlStringCompletedEventArgs = FactoriesCreator.CustomerServiceReference.GetSqlStringCompletedEventArgs;
 
@@ -30,12 +29,18 @@ namespace FactoriesCreator.ViewModels
 
         public FactoryCreatorModel()
         {
+            Proxy = new CustomerServiceClient();
             InicializarComandos();
         }
 
         void Proxy_GetSqlStringCompleted(object sender, GetSqlStringCompletedEventArgs e)
         {
             PropQueryString = e.Result;
+        }
+
+        void Proxy_SelectCompleted(object sender, SelectCompletedEventArgs e)
+        {
+            Resultado = e.Result;
         }
 
         #endregion
@@ -58,6 +63,21 @@ namespace FactoriesCreator.ViewModels
 
         private string _queryString;
 
+        public string Resultado
+        {
+            get { return _resultado; }
+            set
+            {
+                if (_resultado != value)
+                {
+                    _resultado = value;
+                    RaisePropertyChanged("Resultado");
+                }
+            }
+        }
+
+        private string _resultado;
+
         #endregion
 
         #region Metodos publicos 
@@ -65,15 +85,22 @@ namespace FactoriesCreator.ViewModels
 
         private void TestConnection()
         {
-            Proxy = new CustomerServiceClient();
             Proxy.GetSqlStringCompleted += Proxy_GetSqlStringCompleted;
             Proxy.GetSqlStringAsync();
         }
+
+        private void EjecutarQuery()
+        {
+            Proxy.SelectCompleted += Proxy_SelectCompleted; 
+            Proxy.SelectAsync();
+        }
+       
 
         public void InicializarComandos() 
         { 
             // Asocia el metodo al comando 
             ComandoEjecutarTemporal = new RelayCommand(TestConnection);
+            ComandoQuery = new RelayCommand(EjecutarQuery);
         }
 
         #endregion
@@ -85,6 +112,7 @@ namespace FactoriesCreator.ViewModels
         /// Comando para ejecutarQuery
         /// </summary>
         public RelayCommand ComandoEjecutarTemporal { get; set; }
+        public RelayCommand ComandoQuery { get; set; }
 
         #endregion
     }

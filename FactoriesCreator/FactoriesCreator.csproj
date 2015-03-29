@@ -102,11 +102,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\SqlServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\BaseINPC.cs" />
     <Compile Include="ViewModels\FactoryCreatorModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
@@ -131,18 +126,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
-    <None Include="Service References\CustomerServiceReference\CustomerService.wsdl" />
-    <None Include="Service References\CustomerServiceReference\CustomerService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CustomerServiceReference\CustomerService1.wsdl" />
-    <None Include="Service References\CustomerServiceReference\CustomerService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SqlServiceReference\FactoriesCreator.SqlServiceReference.GetSqlStringResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\SqlServiceReference\SqlService.wsdl" />
     <None Include="Service References\CustomerServiceReference\CustomerService.disco" />
     <None Include="Service References\CustomerServiceReference\configuration91.svcinfo" />
     <None Include="Service References\CustomerServiceReference\configuration.svcinfo" />
@@ -151,6 +134,17 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="ServiceReferences.ClientConfig" />
+    <None Include="Service References\CustomerServiceReference\CustomerService.wsdl" />
+    <None Include="Service References\CustomerServiceReference\CustomerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerServiceReference\CustomerService1.wsdl" />
+    <None Include="Service References\CustomerServiceReference\CustomerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerServiceReference\CustomerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Librerias Externas\" />
@@ -161,22 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\CustomerServiceReference\" />
-    <WCFMetadataStorage Include="Service References\SqlServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SqlServiceReference\SqlService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SqlServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SqlServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SqlServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
