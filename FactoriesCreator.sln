@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoriesCreator", "FactoriesCreator\FactoriesCreator.csproj", "{B1C18FCA-C1B9-468C-891D-5F348DB85839}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2D6B2517-D61B-4EB1-A61A-126BCA7930D8} = {2D6B2517-D61B-4EB1-A61A-126BCA7930D8}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoriesCreator.Web", "FactoriesCreator.Web\FactoriesCreator.Web.csproj", "{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}"
 EndProject
