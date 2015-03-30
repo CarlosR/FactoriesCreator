@@ -27,9 +27,9 @@
 
                 <StackPanel Grid.Column="0" >
                     <sdk:Label Content="Class name:"/>
-                    <TextBox Width="auto" Text="{Binding PropQueryString, Mode=TwoWay}"/>
+                    <TextBox Width="auto" Text="{Binding PropNombreClase, Mode=TwoWay}"/>
                 </StackPanel>
-                <sdk:DataGrid Margin="0,45,0,0" Grid.Column="0"/>
+                <sdk:DataGrid Margin="0,45,0,0" Grid.Column="0" ItemsSource="{Binding ElementosDeClase, Mode=TwoWay}"/>
 
                 <Grid x:Name="QueryGrid" Grid.Column="1" >
                     <Grid.RowDefinitions>
@@ -38,7 +38,9 @@
                     </Grid.RowDefinitions>
                     
                         <sdk:Label Content="Query: " Width="auto" Grid.Row="0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="txtQuery" Grid.Row="0" Margin="0,17,0,0"   />
+                        <ScrollViewer Grid.Row="0" Margin="0,17,0,0" >
+                            <TextBox x:Name="txtQuery" Margin="0,17,0,0"   />
+                        </ScrollViewer>
 
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -65,13 +67,15 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <Button Content="Generate code"/>
+                    <Button Content="Generate code" Command="{Binding ComandoGenerarCodigo,Mode=TwoWay}"/>
                     <TextBlock Width="10"/>
-                    <Button Content="Copy to clipboard"/>
+                    <Button Content="Copy to clipboard" Command="{Binding ComandoCopiarAClipboard,Mode=TwoWay}"/>
                 </StackPanel>
 
                 <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock Grid.Row="1"/>
+                    <ScrollViewer>
+                        <TextBlock Text="{Binding PropCodigoGenerado,Mode=TwoWay}" />
+                    </ScrollViewer>
                 </Border>
             </Grid>
             <Rectangle Fill="Azure" Grid.Row="3"/>

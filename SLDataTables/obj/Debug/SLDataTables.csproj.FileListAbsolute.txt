@@ -1,4 +1,5 @@
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\SLDataTables\Bin\Debug\SLDataTables.dll
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\SLDataTables\Bin\Debug\SLDataTables.pdb
+C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\SLDataTables\obj\Debug\SLDataTables.csprojResolveAssemblyReference.cache
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\SLDataTables\obj\Debug\SLDataTables.dll
 C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\SLDataTables\obj\Debug\SLDataTables.pdb
