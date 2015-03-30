@@ -6,4 +6,3 @@ D:\Caracol Knits\Proyecto MVVM\FactoriesCreator\FactoriesCreator.Web\bin\Factori
 D:\Caracol Knits\Proyecto MVVM\FactoriesCreator\FactoriesCreator.Web\bin\FactoriesCreator.Web.pdb
 D:\Caracol Knits\Proyecto MVVM\FactoriesCreator\FactoriesCreator.Web\obj\Debug\FactoriesCreator.Web.dll
 D:\Caracol Knits\Proyecto MVVM\FactoriesCreator\FactoriesCreator.Web\obj\Debug\FactoriesCreator.Web.pdb
-C:\Users\Carlos\Documents\Visual Studio 2012\Projects\FactoriesCreator\FactoriesCreator.Web\obj\Debug\FactoriesCreator.Web.csprojResolveAssemblyReference.cache

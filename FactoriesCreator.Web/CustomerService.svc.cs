@@ -100,21 +100,19 @@ namespace FactoriesCreator.Web
         }
 
         [OperationContract]
-        public IEnumerable<Dictionary<string, object>> Select()
+        public IEnumerable<Dictionary<string, object>> Select(string query)
         {
             IEnumerable<Dictionary<string, object>> resultado;
 
-            string querySelect = "select * from Cliente";
+            string querySelect = query;
 
             try
             {
                 resultado = Consulta(querySelect);
             }
-
-            catch (Exception Error)
+            catch (Exception error)
             {
-                resultado = new List<Dictionary<string, object>>();
-                throw Error;
+                return null;
             }
 
             return resultado;

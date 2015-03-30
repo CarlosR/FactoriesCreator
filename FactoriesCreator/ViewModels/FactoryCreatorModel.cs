@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.ServiceModel.Channels;
+using System.Windows;
 using FactoriesCreator.CustomerServiceReference;
 using GalaSoft.MvvmLight.Command;
 using Telerik.Data;
@@ -31,29 +33,15 @@ namespace FactoriesCreator.ViewModels
 
         void Proxy_SelectCompleted(object sender, SelectCompletedEventArgs e)
         {
-            Resultado = e.Result;
-            Temporal = new SLDataTable(e.Result);
-            var shit = Resultado.Select(x => new { Value = x.Keys }).ToList();
-
-            //Temporal = new ObservableCollection<string>(shit);
-
-
-            //foreach (var blabla in Resultado)
-            //{
-            //    foreach (var llave in blabla.Keys)
-            //    {
-
-            //        foreach (var valores in blabla.Values)
-            //        {
-            //            Temporal.Add(new { Columna = llave, Lsad = llave });
-
-            //        }
-
-            //    }
-
-                
-            //}
-            
+            if (e.Result != null)
+            {
+                Resultado = new SLDataTable(e.Result); 
+            }
+            else
+            {
+                MessageBox.Show("El query es incorecto");
+            }
+           
         }
 
         #endregion
@@ -76,22 +64,7 @@ namespace FactoriesCreator.ViewModels
 
         private string _queryString;
 
-        public SLDataTable Temporal
-        {
-            get { return _temporal; }
-            set
-            {
-                if (_temporal != value)
-                {
-                    _temporal = value;
-                    RaisePropertyChanged("Temporal");
-                }
-            }
-        }
-
-        private SLDataTable _temporal;
-
-        public ObservableCollection<Dictionary<string, object>> Resultado
+        public SLDataTable Resultado 
         {
             get { return _resultado; }
             set
@@ -104,7 +77,7 @@ namespace FactoriesCreator.ViewModels
             }
         }
 
-        private ObservableCollection<Dictionary<string, object>> _resultado;
+        private SLDataTable _resultado;
 
         #endregion
 
@@ -117,10 +90,23 @@ namespace FactoriesCreator.ViewModels
             Proxy.GetSqlStringAsync();
         }
 
-        private void EjecutarQuery()
+        private void EjecutarQuery(string query)
         {
-            Proxy.SelectCompleted += Proxy_SelectCompleted; 
-            Proxy.SelectAsync();
+            if (query.Length > 5)
+            {
+                string verificaSelect = query.Substring(0, 6).ToLower();
+
+                if (verificaSelect == "select")
+                {
+                    Proxy.SelectCompleted += Proxy_SelectCompleted;
+                    Proxy.SelectAsync(query);
+                }
+                else
+                {
+                    MessageBox.Show("Solo puede realizar querys de select", "Error de Consulta", MessageBoxButton.OK);
+                }
+            }
+            
         }
        
 
@@ -128,7 +114,7 @@ namespace FactoriesCreator.ViewModels
         { 
             // Asocia el metodo al comando 
             ComandoEjecutarTemporal = new RelayCommand(TestConnection);
-            ComandoQuery = new RelayCommand(EjecutarQuery);
+            ComandoQuery = new RelayCommand<string> (EjecutarQuery);
         }
 
         #endregion
@@ -140,7 +126,7 @@ namespace FactoriesCreator.ViewModels
         /// Comando para ejecutarQuery
         /// </summary>
         public RelayCommand ComandoEjecutarTemporal { get; set; }
-        public RelayCommand ComandoQuery { get; set; }
+        public RelayCommand<string> ComandoQuery { get; set; }
 
         #endregion
     }

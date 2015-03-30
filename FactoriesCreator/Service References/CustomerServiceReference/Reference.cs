@@ -34,7 +34,7 @@ namespace FactoriesCreator.CustomerServiceReference {
         System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> EndConsulta(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/Select", ReplyAction="urn:CustomerService/SelectResponse")]
-        System.IAsyncResult BeginSelect(System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginSelect(string query, System.AsyncCallback callback, object asyncState);
         
         System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> EndSelect(System.IAsyncResult result);
     }
@@ -349,8 +349,8 @@ namespace FactoriesCreator.CustomerServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult FactoriesCreator.CustomerServiceReference.CustomerService.BeginSelect(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginSelect(callback, asyncState);
+        System.IAsyncResult FactoriesCreator.CustomerServiceReference.CustomerService.BeginSelect(string query, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSelect(query, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -359,7 +359,8 @@ namespace FactoriesCreator.CustomerServiceReference {
         }
         
         private System.IAsyncResult OnBeginSelect(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).BeginSelect(callback, asyncState);
+            string query = ((string)(inValues[0]));
+            return ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).BeginSelect(query, callback, asyncState);
         }
         
         private object[] OnEndSelect(System.IAsyncResult result) {
@@ -375,11 +376,11 @@ namespace FactoriesCreator.CustomerServiceReference {
             }
         }
         
-        public void SelectAsync() {
-            this.SelectAsync(null);
+        public void SelectAsync(string query) {
+            this.SelectAsync(query, null);
         }
         
-        public void SelectAsync(object userState) {
+        public void SelectAsync(string query, object userState) {
             if ((this.onBeginSelectDelegate == null)) {
                 this.onBeginSelectDelegate = new BeginOperationDelegate(this.OnBeginSelect);
             }
@@ -389,7 +390,8 @@ namespace FactoriesCreator.CustomerServiceReference {
             if ((this.onSelectCompletedDelegate == null)) {
                 this.onSelectCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSelectCompleted);
             }
-            base.InvokeAsync(this.onBeginSelectDelegate, null, this.onEndSelectDelegate, this.onSelectCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginSelectDelegate, new object[] {
+                        query}, this.onEndSelectDelegate, this.onSelectCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -506,8 +508,9 @@ namespace FactoriesCreator.CustomerServiceReference {
                 return _result;
             }
             
-            public System.IAsyncResult BeginSelect(System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[0];
+            public System.IAsyncResult BeginSelect(string query, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = query;
                 System.IAsyncResult _result = base.BeginInvoke("Select", _args, callback, asyncState);
                 return _result;
             }
