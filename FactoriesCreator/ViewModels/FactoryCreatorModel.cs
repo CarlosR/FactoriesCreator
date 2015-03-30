@@ -10,6 +10,7 @@ using FactoriesCreator.CustomerServiceReference;
 using FactoriesCreator.Models;
 using GalaSoft.MvvmLight.Command;
 using Telerik.Data;
+//using Excel = Microsoft.Office.Interop.Excel;
 
 namespace FactoriesCreator.ViewModels
 {
@@ -512,7 +513,13 @@ namespace FactoriesCreator.ViewModels
 
             }
         }
-       
+
+        private void ExportarAExcel()
+        {
+            //string strTitle = "Resultado";
+            //new FactoryCreatorModel(this.Resultado,this.Page).Export(strTitle);
+        }
+
 
         public void InicializarComandos() 
         { 
@@ -523,6 +530,7 @@ namespace FactoriesCreator.ViewModels
             ComandoCopiarAClipboard = new RelayCommand(CopiarAClipboard);
             ComandoTryConnection = new RelayCommand(TryConecction);
             ComandoTipoConexion = new RelayCommand<string>(VerificarTipoConexion);
+            ComandoExportarAExcel = new RelayCommand(ExportarAExcel);
         }
 
         #endregion
@@ -539,6 +547,7 @@ namespace FactoriesCreator.ViewModels
         public RelayCommand ComandoCopiarAClipboard { get; set; }
         public RelayCommand ComandoTryConnection { get; set; }
         public RelayCommand<string> ComandoTipoConexion { get; set; }
+        public RelayCommand ComandoExportarAExcel { get; set; }
 
         #endregion
     }

@@ -75,7 +75,7 @@
                         <StackPanel Orientation="Horizontal" Grid.Row="0" >
                             <Button Content="Data Preview" Command="{Binding ComandoQuery, Mode=TwoWay}" CommandParameter="{Binding ElementName=txtQuery, Path=Text}"/>
                             <TextBlock Width="10"/>
-                            <Button Content="Export to Excel"/>
+                            <Button Content="Export to Excel" Command="{Binding ComandoExportarAExcel,Mode=TwoWay}"/>
                         </StackPanel>
                         
                         <sdk:DataGrid Grid.Row="1" ItemsSource="{Binding Resultado, Mode=TwoWay}"/>
