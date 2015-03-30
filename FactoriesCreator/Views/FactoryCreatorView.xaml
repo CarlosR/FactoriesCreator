@@ -9,6 +9,31 @@
     d:DesignHeight="500" d:DesignWidth="800">
 
     <Grid x:Name="LayoutRoot" Background="White">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:0.5">
+                        <VisualTransition.GeneratedEasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+
+                <VisualState x:Name="Normal">
+                    <Storyboard>
+                        <DoubleAnimation Duration="0" To="-2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="AgregarAtributoPanel" d:IsOptimized="True"/>
+                    </Storyboard>
+                </VisualState>
+
+                <VisualState x:Name="MostrarShiftState">
+                    <Storyboard>
+
+                        <DoubleAnimation Duration="0" To="-454" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="AgregarAtributoPanel" d:IsOptimized="True"/>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
         <sdk:Label HorizontalAlignment="Left" Height="50" Content="Factories Creator" VerticalAlignment="Top" FontSize="30"/>
 
         <Grid x:Name="HorizontalGrid">
@@ -81,5 +106,91 @@
             <Rectangle Fill="Azure" Grid.Row="3"/>
         </Grid>
 
+        <Button Content="Server" Height="27" HorizontalAlignment="Right"  Name="btnServerConfig" VerticalAlignment="Bottom" Width="75" Click="btnServerConfig_Click" />
+
+        <Grid Height="Auto" x:Name="AgregarAtributoPanel" HorizontalAlignment="Right" Background="#FFF3F3F3" Opacity="1" RenderTransformOrigin="0.5,0.5" Margin="0,2,-460,-2" Width="301">
+            <Grid.RenderTransform>
+                <CompositeTransform />
+            </Grid.RenderTransform>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="96*" />
+                <RowDefinition Height="207*"/>
+                <RowDefinition Height="83*" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <TextBlock Margin="49,10,48,10" Grid.Row="0" TextWrapping="Wrap" Text="Server Configuration" HorizontalAlignment="Center" FontSize="16"/>
+            <ScrollViewer Margin="20,10" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.RowSpan="3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="24"/>
+                    </Grid.RowDefinitions>
+                    <Canvas Grid.Row="0">
+                        <RadioButton x:Name="rdbWindAuthent" Content="Windows Authentication" HorizontalAlignment="Left"  VerticalAlignment="Top" Command="{Binding ComandoTipoConexion, Mode=TwoWay}" CommandParameter="{Binding ElementName=rdbWindAuthent, Path=Content}"/>
+                    </Canvas>
+                    <Canvas Grid.Row="1" >
+                        <RadioButton x:Name="rdbSqlAuthent" Content="SQL Server Authentication" HorizontalAlignment="Left"  VerticalAlignment="Top" Command="{Binding ComandoTipoConexion, Mode=TwoWay}" CommandParameter="{Binding ElementName=rdbSqlAuthent, Path=Content}"/>
+                    </Canvas>
+                    <Canvas Grid.Row="2" >
+                        <sdk:Label Height="20" Canvas.Top="19" Width="120" Content="Server" HorizontalContentAlignment="Left"/>
+                    </Canvas>
+                    <Canvas Grid.Row="3" >
+                        <TextBox x:Name="txtServer" Width="251" Text="{Binding Server, Mode=TwoWay}"/>
+                    </Canvas>
+                    <Canvas Grid.Row="4" >
+                        <sdk:Label Height="20" Canvas.Top="4" Width="120" Content="Database" HorizontalContentAlignment="Left" RenderTransformOrigin="0.5,0.6"/>
+                    </Canvas>
+                    <Canvas Grid.Row="5" >
+                        <TextBox x:Name="txtDataBase" Width="251" Text="{Binding DataBase, Mode=TwoWay}"/>
+                    </Canvas>
+                    <Canvas Grid.Row="6" >
+                        <sdk:Label Height="20" Canvas.Top="4" Width="120" Content="User" HorizontalContentAlignment="Left" RenderTransformOrigin="0.5,0.6"/>
+                    </Canvas>
+                    <Canvas Grid.Row="7" >
+                        <TextBox x:Name="txtUser" Width="251" Text="{Binding User, Mode=TwoWay}"/>
+                    </Canvas>
+                    <Canvas Grid.Row="8" >
+                        <sdk:Label Height="20" Canvas.Top="4" Width="120" Content="Password" HorizontalContentAlignment="Left" RenderTransformOrigin="0.5,0.6"/>
+                    </Canvas>
+                    <Canvas Grid.Row="9" >
+                        <TextBox x:Name="txtPassword" Width="251" Text="{Binding Password, Mode=TwoWay}" />
+                    </Canvas>
+                </Grid>
+            </ScrollViewer>
+
+            <Grid x:Name="AppBarEdicionGrid4" Grid.Row="4" Height="70" VerticalAlignment="Top" Background="#FF8C8C8C">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnBack" Content="Back" Grid.Column="0" HorizontalAlignment="Left" Margin="37,22,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
+                <Button x:Name="btnTryConnection" Content="Try Connection" Grid.Column="1" HorizontalAlignment="Left" Margin="32,22,0,0" VerticalAlignment="Top" Width="91" Command="{Binding ComandoTryConnection, Mode=TwoWay}"/>
+
+                <!--<StackPanel x:Name="BackButtonStackPanel4" Margin="10,5">
+                    <Button x:Name="btnBack" Height="30" Click="btnBack_Click" />
+                    <TextBlock HorizontalAlignment="Center" Text="Back" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Height="70" HorizontalAlignment="Right" Orientation="Horizontal">
+                    
+                     
+                        <StackPanel x:Name="stackPanel8" Margin="20,5">
+                            <Button Height="30" />
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding ResourceSet[etiqueta_Editar], FallbackValue=[Try]}" />
+                        </StackPanel>
+                   
+                </StackPanel>-->
+
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

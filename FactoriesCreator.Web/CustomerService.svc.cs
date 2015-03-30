@@ -15,10 +15,48 @@ namespace FactoriesCreator.Web
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class CustomerService
     {
+        private static string _miCadenaConexion;
+
+        /// <summary>
+        /// Test that the server is connected
+        /// </summary>
+        /// <param name="connectionString">The connection string</param>
+        /// <returns>true if the connection is opened</returns>
+        [OperationContract]
+        private bool IsServerConnected(string connectionString)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    return true;
+                }
+                catch (SqlException)
+                {
+                    return false;
+                }
+            }
+        }
+
+        [OperationContract]
+        public string SqlConnection(string server, string dataBase, string user, string password)
+        {
+            return _miCadenaConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}",
+                                                    server, dataBase, user, password);
+        }
+
+        [OperationContract]
+        public string WindowsConnection(string dataBase)
+        {
+            return _miCadenaConexion = string.Format("Data Source=(local); Initial Catalog={0}; Persist Security Info=True; Integrated Security = True;",
+                                                     dataBase);
+        }
+
         [OperationContract]
         public string GetSqlString()
         {
-            return "Data Source=(local); Initial Catalog=MVVMTestDataBase; Persist Security Info=True; Integrated Security = True;";
+            return _miCadenaConexion;
         }
 
         // Add more operations here and mark them with [OperationContract]

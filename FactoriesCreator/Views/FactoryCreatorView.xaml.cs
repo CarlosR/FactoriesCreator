@@ -18,5 +18,16 @@ namespace FactoriesCreator.Views
         {
             InitializeComponent();
         }
+
+        private void btnServerConfig_Click(object sender, RoutedEventArgs e)
+        {
+            VisualStateManager.GoToState(this, "MostrarShiftState", true);
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            VisualStateManager.GoToState(this, "Normal", true);
+        }
+
     }
 }

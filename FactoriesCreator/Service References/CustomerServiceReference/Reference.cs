@@ -18,6 +18,21 @@ namespace FactoriesCreator.CustomerServiceReference {
     [System.ServiceModel.ServiceContractAttribute(Namespace="", ConfigurationName="CustomerServiceReference.CustomerService")]
     public interface CustomerService {
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/IsServerConnected", ReplyAction="urn:CustomerService/IsServerConnectedResponse")]
+        System.IAsyncResult BeginIsServerConnected(string connectionString, System.AsyncCallback callback, object asyncState);
+        
+        bool EndIsServerConnected(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/SqlConnection", ReplyAction="urn:CustomerService/SqlConnectionResponse")]
+        System.IAsyncResult BeginSqlConnection(string server, string dataBase, string user, string password, System.AsyncCallback callback, object asyncState);
+        
+        string EndSqlConnection(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/WindowsConnection", ReplyAction="urn:CustomerService/WindowsConnectionResponse")]
+        System.IAsyncResult BeginWindowsConnection(string dataBase, System.AsyncCallback callback, object asyncState);
+        
+        string EndWindowsConnection(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/GetSqlString", ReplyAction="urn:CustomerService/GetSqlStringResponse")]
         System.IAsyncResult BeginGetSqlString(System.AsyncCallback callback, object asyncState);
         
@@ -41,6 +56,63 @@ namespace FactoriesCreator.CustomerServiceReference {
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CustomerServiceChannel : FactoriesCreator.CustomerServiceReference.CustomerService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class IsServerConnectedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public IsServerConnectedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SqlConnectionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public SqlConnectionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class WindowsConnectionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public WindowsConnectionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -123,6 +195,24 @@ namespace FactoriesCreator.CustomerServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class CustomerServiceClient : System.ServiceModel.ClientBase<FactoriesCreator.CustomerServiceReference.CustomerService>, FactoriesCreator.CustomerServiceReference.CustomerService {
         
+        private BeginOperationDelegate onBeginIsServerConnectedDelegate;
+        
+        private EndOperationDelegate onEndIsServerConnectedDelegate;
+        
+        private System.Threading.SendOrPostCallback onIsServerConnectedCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSqlConnectionDelegate;
+        
+        private EndOperationDelegate onEndSqlConnectionDelegate;
+        
+        private System.Threading.SendOrPostCallback onSqlConnectionCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginWindowsConnectionDelegate;
+        
+        private EndOperationDelegate onEndWindowsConnectionDelegate;
+        
+        private System.Threading.SendOrPostCallback onWindowsConnectionCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetSqlStringDelegate;
         
         private EndOperationDelegate onEndGetSqlStringDelegate;
@@ -200,6 +290,12 @@ namespace FactoriesCreator.CustomerServiceReference {
             }
         }
         
+        public event System.EventHandler<IsServerConnectedCompletedEventArgs> IsServerConnectedCompleted;
+        
+        public event System.EventHandler<SqlConnectionCompletedEventArgs> SqlConnectionCompleted;
+        
+        public event System.EventHandler<WindowsConnectionCompletedEventArgs> WindowsConnectionCompleted;
+        
         public event System.EventHandler<GetSqlStringCompletedEventArgs> GetSqlStringCompleted;
         
         public event System.EventHandler<AccionesCompletedEventArgs> AccionesCompleted;
@@ -211,6 +307,150 @@ namespace FactoriesCreator.CustomerServiceReference {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult FactoriesCreator.CustomerServiceReference.CustomerService.BeginIsServerConnected(string connectionString, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginIsServerConnected(connectionString, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool FactoriesCreator.CustomerServiceReference.CustomerService.EndIsServerConnected(System.IAsyncResult result) {
+            return base.Channel.EndIsServerConnected(result);
+        }
+        
+        private System.IAsyncResult OnBeginIsServerConnected(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string connectionString = ((string)(inValues[0]));
+            return ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).BeginIsServerConnected(connectionString, callback, asyncState);
+        }
+        
+        private object[] OnEndIsServerConnected(System.IAsyncResult result) {
+            bool retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndIsServerConnected(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnIsServerConnectedCompleted(object state) {
+            if ((this.IsServerConnectedCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.IsServerConnectedCompleted(this, new IsServerConnectedCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void IsServerConnectedAsync(string connectionString) {
+            this.IsServerConnectedAsync(connectionString, null);
+        }
+        
+        public void IsServerConnectedAsync(string connectionString, object userState) {
+            if ((this.onBeginIsServerConnectedDelegate == null)) {
+                this.onBeginIsServerConnectedDelegate = new BeginOperationDelegate(this.OnBeginIsServerConnected);
+            }
+            if ((this.onEndIsServerConnectedDelegate == null)) {
+                this.onEndIsServerConnectedDelegate = new EndOperationDelegate(this.OnEndIsServerConnected);
+            }
+            if ((this.onIsServerConnectedCompletedDelegate == null)) {
+                this.onIsServerConnectedCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnIsServerConnectedCompleted);
+            }
+            base.InvokeAsync(this.onBeginIsServerConnectedDelegate, new object[] {
+                        connectionString}, this.onEndIsServerConnectedDelegate, this.onIsServerConnectedCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult FactoriesCreator.CustomerServiceReference.CustomerService.BeginSqlConnection(string server, string dataBase, string user, string password, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSqlConnection(server, dataBase, user, password, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string FactoriesCreator.CustomerServiceReference.CustomerService.EndSqlConnection(System.IAsyncResult result) {
+            return base.Channel.EndSqlConnection(result);
+        }
+        
+        private System.IAsyncResult OnBeginSqlConnection(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string server = ((string)(inValues[0]));
+            string dataBase = ((string)(inValues[1]));
+            string user = ((string)(inValues[2]));
+            string password = ((string)(inValues[3]));
+            return ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).BeginSqlConnection(server, dataBase, user, password, callback, asyncState);
+        }
+        
+        private object[] OnEndSqlConnection(System.IAsyncResult result) {
+            string retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndSqlConnection(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnSqlConnectionCompleted(object state) {
+            if ((this.SqlConnectionCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SqlConnectionCompleted(this, new SqlConnectionCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SqlConnectionAsync(string server, string dataBase, string user, string password) {
+            this.SqlConnectionAsync(server, dataBase, user, password, null);
+        }
+        
+        public void SqlConnectionAsync(string server, string dataBase, string user, string password, object userState) {
+            if ((this.onBeginSqlConnectionDelegate == null)) {
+                this.onBeginSqlConnectionDelegate = new BeginOperationDelegate(this.OnBeginSqlConnection);
+            }
+            if ((this.onEndSqlConnectionDelegate == null)) {
+                this.onEndSqlConnectionDelegate = new EndOperationDelegate(this.OnEndSqlConnection);
+            }
+            if ((this.onSqlConnectionCompletedDelegate == null)) {
+                this.onSqlConnectionCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSqlConnectionCompleted);
+            }
+            base.InvokeAsync(this.onBeginSqlConnectionDelegate, new object[] {
+                        server,
+                        dataBase,
+                        user,
+                        password}, this.onEndSqlConnectionDelegate, this.onSqlConnectionCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult FactoriesCreator.CustomerServiceReference.CustomerService.BeginWindowsConnection(string dataBase, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginWindowsConnection(dataBase, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string FactoriesCreator.CustomerServiceReference.CustomerService.EndWindowsConnection(System.IAsyncResult result) {
+            return base.Channel.EndWindowsConnection(result);
+        }
+        
+        private System.IAsyncResult OnBeginWindowsConnection(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string dataBase = ((string)(inValues[0]));
+            return ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).BeginWindowsConnection(dataBase, callback, asyncState);
+        }
+        
+        private object[] OnEndWindowsConnection(System.IAsyncResult result) {
+            string retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndWindowsConnection(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnWindowsConnectionCompleted(object state) {
+            if ((this.WindowsConnectionCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.WindowsConnectionCompleted(this, new WindowsConnectionCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void WindowsConnectionAsync(string dataBase) {
+            this.WindowsConnectionAsync(dataBase, null);
+        }
+        
+        public void WindowsConnectionAsync(string dataBase, object userState) {
+            if ((this.onBeginWindowsConnectionDelegate == null)) {
+                this.onBeginWindowsConnectionDelegate = new BeginOperationDelegate(this.OnBeginWindowsConnection);
+            }
+            if ((this.onEndWindowsConnectionDelegate == null)) {
+                this.onEndWindowsConnectionDelegate = new EndOperationDelegate(this.OnEndWindowsConnection);
+            }
+            if ((this.onWindowsConnectionCompletedDelegate == null)) {
+                this.onWindowsConnectionCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnWindowsConnectionCompleted);
+            }
+            base.InvokeAsync(this.onBeginWindowsConnectionDelegate, new object[] {
+                        dataBase}, this.onEndWindowsConnectionDelegate, this.onWindowsConnectionCompletedDelegate, userState);
+        }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.IAsyncResult FactoriesCreator.CustomerServiceReference.CustomerService.BeginGetSqlString(System.AsyncCallback callback, object asyncState) {
@@ -468,6 +708,48 @@ namespace FactoriesCreator.CustomerServiceReference {
             
             public CustomerServiceClientChannel(System.ServiceModel.ClientBase<FactoriesCreator.CustomerServiceReference.CustomerService> client) : 
                     base(client) {
+            }
+            
+            public System.IAsyncResult BeginIsServerConnected(string connectionString, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = connectionString;
+                System.IAsyncResult _result = base.BeginInvoke("IsServerConnected", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndIsServerConnected(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("IsServerConnected", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginSqlConnection(string server, string dataBase, string user, string password, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[4];
+                _args[0] = server;
+                _args[1] = dataBase;
+                _args[2] = user;
+                _args[3] = password;
+                System.IAsyncResult _result = base.BeginInvoke("SqlConnection", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndSqlConnection(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("SqlConnection", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginWindowsConnection(string dataBase, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = dataBase;
+                System.IAsyncResult _result = base.BeginInvoke("WindowsConnection", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndWindowsConnection(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("WindowsConnection", _args, result)));
+                return _result;
             }
             
             public System.IAsyncResult BeginGetSqlString(System.AsyncCallback callback, object asyncState) {

@@ -7,6 +7,24 @@
       <xsd:import schemaLocation="http://localhost:1278/CustomerService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="CustomerService_IsServerConnected_InputMessage">
+    <wsdl:part name="parameters" element="IsServerConnected" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_IsServerConnected_OutputMessage">
+    <wsdl:part name="parameters" element="IsServerConnectedResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_SqlConnection_InputMessage">
+    <wsdl:part name="parameters" element="SqlConnection" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_SqlConnection_OutputMessage">
+    <wsdl:part name="parameters" element="SqlConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_WindowsConnection_InputMessage">
+    <wsdl:part name="parameters" element="WindowsConnection" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_WindowsConnection_OutputMessage">
+    <wsdl:part name="parameters" element="WindowsConnectionResponse" />
+  </wsdl:message>
   <wsdl:message name="CustomerService_GetSqlString_InputMessage">
     <wsdl:part name="parameters" element="GetSqlString" />
   </wsdl:message>
@@ -32,6 +50,18 @@
     <wsdl:part name="parameters" element="SelectResponse" />
   </wsdl:message>
   <wsdl:portType name="CustomerService">
+    <wsdl:operation name="IsServerConnected">
+      <wsdl:input wsaw:Action="urn:CustomerService/IsServerConnected" message="CustomerService_IsServerConnected_InputMessage" />
+      <wsdl:output wsaw:Action="urn:CustomerService/IsServerConnectedResponse" message="CustomerService_IsServerConnected_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SqlConnection">
+      <wsdl:input wsaw:Action="urn:CustomerService/SqlConnection" message="CustomerService_SqlConnection_InputMessage" />
+      <wsdl:output wsaw:Action="urn:CustomerService/SqlConnectionResponse" message="CustomerService_SqlConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WindowsConnection">
+      <wsdl:input wsaw:Action="urn:CustomerService/WindowsConnection" message="CustomerService_WindowsConnection_InputMessage" />
+      <wsdl:output wsaw:Action="urn:CustomerService/WindowsConnectionResponse" message="CustomerService_WindowsConnection_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetSqlString">
       <wsdl:input wsaw:Action="urn:CustomerService/GetSqlString" message="CustomerService_GetSqlString_InputMessage" />
       <wsdl:output wsaw:Action="urn:CustomerService/GetSqlStringResponse" message="CustomerService_GetSqlString_OutputMessage" />

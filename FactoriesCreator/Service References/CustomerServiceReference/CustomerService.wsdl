@@ -13,6 +13,33 @@
   <wsdl:binding name="CustomBinding_CustomerService" type="CustomerService">
     <wsp:PolicyReference URI="#CustomBinding_CustomerService_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsServerConnected">
+      <soap12:operation soapAction="urn:CustomerService/IsServerConnected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SqlConnection">
+      <soap12:operation soapAction="urn:CustomerService/SqlConnection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WindowsConnection">
+      <soap12:operation soapAction="urn:CustomerService/WindowsConnection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetSqlString">
       <soap12:operation soapAction="urn:CustomerService/GetSqlString" style="document" />
       <wsdl:input>

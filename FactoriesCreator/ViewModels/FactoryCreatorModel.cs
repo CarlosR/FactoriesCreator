@@ -18,6 +18,10 @@ namespace FactoriesCreator.ViewModels
         #region Miembros privados
         // Miembros privados 
 
+        private int _errorAutenticacion = 1;
+        private bool _sqlConnection = true;
+        string _miCadenaConexion = "";
+
         private CustomerServiceClient Proxy;
 
         #endregion
@@ -49,6 +53,29 @@ namespace FactoriesCreator.ViewModels
                 MessageBox.Show("El query es incorecto");
             }
            
+        }
+
+        void Proxy_SqlConnectionCompleted(object sender, SqlConnectionCompletedEventArgs e)
+        {
+            StrConnection = e.Result;
+        }
+
+        void Proxy_WindowsConnectionCompleted(object sender, WindowsConnectionCompletedEventArgs e)
+        {
+            StrConnection = e.Result;
+        }
+
+        void Proxy_IsServerConnectedCompleted(object sender, IsServerConnectedCompletedEventArgs e)
+        {
+            if (e.Result)
+            {
+                MessageBox.Show("Connection Successful", "Test Connection", MessageBoxButton.OK);
+            }
+            else
+            {
+                MessageBox.Show("Connection Failed", "Test Connection", MessageBoxButton.OK);
+            }
+
         }
 
         private void LlenarPropiedades()
@@ -160,6 +187,93 @@ namespace FactoriesCreator.ViewModels
 
         private string _propClaseGenerada;
 
+        public string Server
+        {
+            get { return _server; }
+            set
+            {
+                if (_server != value)
+                {
+                    _server = value;
+                    RaisePropertyChanged("Server");
+                }
+            }
+        }
+
+        private string _server;
+
+        public string DataBase
+        {
+            get { return _dataBase; }
+            set
+            {
+                if (_dataBase != value)
+                {
+                    _dataBase = value;
+                    RaisePropertyChanged("DataBase");
+                }
+            }
+        }
+
+        private string _dataBase;
+
+        public string User
+        {
+            get { return _user; }
+            set
+            {
+                if (_user != value)
+                {
+                    _user = value;
+                    RaisePropertyChanged("User");
+                }
+            }
+        }
+
+        private string _user;
+
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                if (_password != value)
+                {
+                    _password = value;
+                    RaisePropertyChanged("Password");
+                }
+            }
+        }
+        private string _password;
+
+        public string TipoConexion
+        {
+            get { return _tipoConexion; }
+            set
+            {
+                if (_tipoConexion != value)
+                {
+                    _tipoConexion = value;
+                    RaisePropertyChanged("TipoConexion");
+                }
+            }
+        }
+        private string _tipoConexion;
+
+        public string StrConnection
+        {
+            get { return _strConnection; }
+            set
+            {
+                if (_strConnection != value)
+                {
+                    _strConnection = value;
+                    RaisePropertyChanged("StrConnection");
+                }
+            }
+        }
+        private string _strConnection;
+        
         #endregion
 
         #region Metodos publicos 
@@ -186,8 +300,82 @@ namespace FactoriesCreator.ViewModels
                 {
                     MessageBox.Show("Solo puede realizar querys de select", "Error de Consulta", MessageBoxButton.OK);
                 }
+            } 
+        }
+
+        private void TryConecction()
+        {
+            ValidacionAutenticacion();
+
+            if (_errorAutenticacion == 0)
+            {
+                if (_sqlConnection)
+                {
+                    Proxy.SqlConnectionCompleted += Proxy_SqlConnectionCompleted;
+                    Proxy.SqlConnectionAsync(Server, DataBase, User, Password);
+                    _miCadenaConexion = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}",
+                                                     Server, DataBase, User, Password);
+                }
+                else
+                {
+                    Proxy.WindowsConnectionCompleted += Proxy_WindowsConnectionCompleted;
+                    Proxy.WindowsConnectionAsync(DataBase);
+                    _miCadenaConexion = string.Format("Data Source=(local); Initial Catalog={0}; Persist Security Info=True; Integrated Security = True;",
+                                                     DataBase);
+                }
+
+                Proxy.IsServerConnectedCompleted += Proxy_IsServerConnectedCompleted;
+                Proxy.IsServerConnectedAsync(_miCadenaConexion);
             }
-            
+        }
+
+        private void ValidacionAutenticacion()
+        {
+            if (TipoConexion == "SQL Server Authentication")
+            {
+                if (string.IsNullOrEmpty(Server))
+                {
+                    MessageBox.Show("Debe ingresar la instancia del Server", "Error", MessageBoxButton.OK);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(DataBase))
+                {
+                    MessageBox.Show("Debe ingresar el nombre de la Base de Datos", "Error", MessageBoxButton.OK);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(User))
+                {
+                    MessageBox.Show("Debe ingresar el User", "Error", MessageBoxButton.OK);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Password))
+                {
+                    MessageBox.Show("Debe ingresar el Password", "Error", MessageBoxButton.OK);
+                    return;
+                }
+
+                _sqlConnection = true;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(DataBase))
+                {
+                    MessageBox.Show("Debe ingresar el nombre de la Base de Datos", "Error", MessageBoxButton.OK);
+                    return;
+                }
+
+                _sqlConnection = false;
+            }
+
+            _errorAutenticacion = 0;
+        }
+
+        private void VerificarTipoConexion(string tipo)
+        {
+            TipoConexion = tipo;
         }
 
         private void FormatearPropiedad(PropertyInfo property, object result)
@@ -333,6 +521,8 @@ namespace FactoriesCreator.ViewModels
             ComandoQuery = new RelayCommand<string> (EjecutarQuery);
             ComandoGenerarCodigo = new RelayCommand(GenerarCodigo);
             ComandoCopiarAClipboard = new RelayCommand(CopiarAClipboard);
+            ComandoTryConnection = new RelayCommand(TryConecction);
+            ComandoTipoConexion = new RelayCommand<string>(VerificarTipoConexion);
         }
 
         #endregion
@@ -347,6 +537,8 @@ namespace FactoriesCreator.ViewModels
         public RelayCommand<string> ComandoQuery { get; set; }
         public RelayCommand ComandoGenerarCodigo { get; set; }
         public RelayCommand ComandoCopiarAClipboard { get; set; }
+        public RelayCommand ComandoTryConnection { get; set; }
+        public RelayCommand<string> ComandoTipoConexion { get; set; }
 
         #endregion
     }
