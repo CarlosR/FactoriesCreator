@@ -51,7 +51,7 @@
                             <Button Content="Export to Excel" Command="{Binding ComandoQuery,Mode=TwoWay}"/>
                         </StackPanel>
                         
-                        <sdk:DataGrid Grid.Row="1" ItemsSource="{Binding Resultado, Mode=TwoWay}"/>
+                        <sdk:DataGrid Grid.Row="1" ItemsSource="{Binding Temporal, Mode=TwoWay}"/>
                         
                     </Grid>
                     

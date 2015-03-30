@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
-using  System.Linq;
+using System.Reflection;
 
 namespace FactoriesCreator.Web
 {
@@ -18,7 +18,7 @@ namespace FactoriesCreator.Web
         [OperationContract]
         public string GetSqlString()
         {
-            return "Data Source=ECRUZJ14-PC\\SRVCRUZ01;Initial Catalog=Siscohdyl;Persist Security Info=True;User ID=sa;Password=Mantenimiento";
+            return "Data Source=(local); Initial Catalog=MVVMTestDataBase; Persist Security Info=True; Integrated Security = True;";
         }
 
         // Add more operations here and mark them with [OperationContract]
@@ -65,9 +65,9 @@ namespace FactoriesCreator.Web
         /// <param name="sqlQuery">Es el Query a ejecutar</param>
         /// <returns>Retorna un DataTable que puede o no estar lleno</returns>
         [OperationContract]
-        public List<string> Consulta(string sqlQuery)
+        public IEnumerable<Dictionary<string, object>> Consulta(string sqlQuery)
         {
-            List<string> lista;
+            IEnumerable<Dictionary<string, object>> lista;
             var resultado = new DataTable();
 
             try
@@ -77,9 +77,15 @@ namespace FactoriesCreator.Web
                 da = new SqlDataAdapter(sqlQuery, cn);
                 da.Fill(resultado); // LLena el Data Table con el resultado
 
-                lista = resultado.AsEnumerable().Select(x => x.Field<string>("Descripcion")).ToList();
+                var columnas = resultado.Columns.Cast<DataColumn>();
 
-                //List<DataRow> list = resultado.AsEnumerable().ToList();
+                lista = resultado.AsEnumerable().Select(x => columnas.Select(c =>
+                                 new { Column = c.ColumnName, Value = x[c] })
+                             .ToDictionary(i => i.Column, i => i.Value != DBNull.Value ? i.Value : null));
+
+                return lista;
+                
+
             }
             catch (Exception ex)
             {
@@ -91,15 +97,14 @@ namespace FactoriesCreator.Web
                 cn.Dispose(); // Libera el recurso de memoria 
             }
 
-            return lista;
         }
 
         [OperationContract]
-        public List<string> Select()
+        public IEnumerable<Dictionary<string, object>> Select()
         {
-            List<string> resultado = new List<string>();
+            IEnumerable<Dictionary<string, object>> resultado;
 
-            string querySelect = "select descripcion from Inv_DeptoUbicacion where idDepartamento = '5'";
+            string querySelect = "select * from Cliente";
 
             try
             {
@@ -108,10 +113,66 @@ namespace FactoriesCreator.Web
 
             catch (Exception Error)
             {
+                resultado = new List<Dictionary<string, object>>();
                 throw Error;
             }
 
             return resultado;
         }
     }
+
+
+    //public static class Helper
+    //{
+    //            // function that set the given object from the given data row
+    //    public static void SetItemFromRow<T>(T item, DataRow row)
+    //        where T : new()
+    //    {
+    //        // go through each column
+    //        foreach (DataColumn c in row.Table.Columns)
+    //        {
+    //            // find the property for the column
+    //            PropertyInfo p = item.GetType().GetProperty(c.ColumnName);
+
+    //            // if exists, set the value
+    //            if (p != null && row[c] != DBNull.Value)
+    //            {
+    //                p.SetValue(item, row[c], null);
+    //            }
+    //        }
+    //    }
+
+    //    // function that creates an object from the given data row
+    //    public static T CreateItemFromRow<T>(DataRow row)
+    //        where T : new()
+    //    {
+    //        // create a new object
+    //        T item = new T();
+
+    //        // set the item
+    //        SetItemFromRow<T>(item, row);
+
+    //        // return 
+    //        return item;
+    //    }
+
+    //    // function that creates a list of an object from the given data table
+    //    public static List<T> CreateListFromTable<T>(DataTable tbl)
+    //        where T : new()
+    //    {
+    //        // define return list
+    //        var lst = new List<T>();
+
+    //        // go through each row
+    //        foreach (DataRow r in tbl.Rows)
+    //        {
+    //            // add to the list
+    //            lst.Add(CreateItemFromRow<T>(r));
+    //        }
+
+    //        // return the list
+    //        return lst;
+    //    }
+       
+    //}
 }

@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoriesCreator", "Factori
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoriesCreator.Web", "FactoriesCreator.Web\FactoriesCreator.Web.csproj", "{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLDataTable", "..\..\278154_SLDataTable\SLDataTable\SLDataTable.csproj", "{0C2B3958-0C82-49BF-B861-89CF7C98DD52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLDataTables", "SLDataTables\SLDataTables.csproj", "{31388AA9-6915-4AFF-BBE8-E5BCE5912BE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +26,14 @@ Global
 		{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7281E1DC-4C4B-4C49-95A2-0EA97EE2687D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2B3958-0C82-49BF-B861-89CF7C98DD52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C2B3958-0C82-49BF-B861-89CF7C98DD52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C2B3958-0C82-49BF-B861-89CF7C98DD52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C2B3958-0C82-49BF-B861-89CF7C98DD52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31388AA9-6915-4AFF-BBE8-E5BCE5912BE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31388AA9-6915-4AFF-BBE8-E5BCE5912BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31388AA9-6915-4AFF-BBE8-E5BCE5912BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31388AA9-6915-4AFF-BBE8-E5BCE5912BE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

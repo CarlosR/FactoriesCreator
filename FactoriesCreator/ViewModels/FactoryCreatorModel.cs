@@ -1,20 +1,9 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using FactoriesCreator.CustomerServiceReference;
 using GalaSoft.MvvmLight.Command;
-using System.Collections.ObjectModel;
-using System.ServiceModel;
-using GetSqlStringCompletedEventArgs = FactoriesCreator.CustomerServiceReference.GetSqlStringCompletedEventArgs;
-
-using System.Collections.Generic;
+using Telerik.Data;
 
 namespace FactoriesCreator.ViewModels
 {
@@ -42,7 +31,29 @@ namespace FactoriesCreator.ViewModels
 
         void Proxy_SelectCompleted(object sender, SelectCompletedEventArgs e)
         {
-            Resultado = new ObservableCollection<string>(e.Result);
+            Resultado = e.Result;
+            Temporal = new SLDataTable(e.Result);
+            var shit = Resultado.Select(x => new { Value = x.Keys }).ToList();
+
+            //Temporal = new ObservableCollection<string>(shit);
+
+
+            //foreach (var blabla in Resultado)
+            //{
+            //    foreach (var llave in blabla.Keys)
+            //    {
+
+            //        foreach (var valores in blabla.Values)
+            //        {
+            //            Temporal.Add(new { Columna = llave, Lsad = llave });
+
+            //        }
+
+            //    }
+
+                
+            //}
+            
         }
 
         #endregion
@@ -65,7 +76,22 @@ namespace FactoriesCreator.ViewModels
 
         private string _queryString;
 
-        public ObservableCollection<string> Resultado
+        public SLDataTable Temporal
+        {
+            get { return _temporal; }
+            set
+            {
+                if (_temporal != value)
+                {
+                    _temporal = value;
+                    RaisePropertyChanged("Temporal");
+                }
+            }
+        }
+
+        private SLDataTable _temporal;
+
+        public ObservableCollection<Dictionary<string, object>> Resultado
         {
             get { return _resultado; }
             set
@@ -78,7 +104,7 @@ namespace FactoriesCreator.ViewModels
             }
         }
 
-        private ObservableCollection<string> _resultado;
+        private ObservableCollection<Dictionary<string, object>> _resultado;
 
         #endregion
 

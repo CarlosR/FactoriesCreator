@@ -31,12 +31,12 @@ namespace FactoriesCreator.CustomerServiceReference {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/Consulta", ReplyAction="urn:CustomerService/ConsultaResponse")]
         System.IAsyncResult BeginConsulta(string sqlQuery, System.AsyncCallback callback, object asyncState);
         
-        System.Collections.ObjectModel.ObservableCollection<string> EndConsulta(System.IAsyncResult result);
+        System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> EndConsulta(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:CustomerService/Select", ReplyAction="urn:CustomerService/SelectResponse")]
         System.IAsyncResult BeginSelect(System.AsyncCallback callback, object asyncState);
         
-        System.Collections.ObjectModel.ObservableCollection<string> EndSelect(System.IAsyncResult result);
+        System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> EndSelect(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -92,10 +92,10 @@ namespace FactoriesCreator.CustomerServiceReference {
             this.results = results;
         }
         
-        public System.Collections.ObjectModel.ObservableCollection<string> Result {
+        public System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.ObjectModel.ObservableCollection<string>)(this.results[0]));
+                return ((System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>>)(this.results[0]));
             }
         }
     }
@@ -111,10 +111,10 @@ namespace FactoriesCreator.CustomerServiceReference {
             this.results = results;
         }
         
-        public System.Collections.ObjectModel.ObservableCollection<string> Result {
+        public System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.ObjectModel.ObservableCollection<string>)(this.results[0]));
+                return ((System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>>)(this.results[0]));
             }
         }
     }
@@ -308,7 +308,7 @@ namespace FactoriesCreator.CustomerServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Collections.ObjectModel.ObservableCollection<string> FactoriesCreator.CustomerServiceReference.CustomerService.EndConsulta(System.IAsyncResult result) {
+        System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> FactoriesCreator.CustomerServiceReference.CustomerService.EndConsulta(System.IAsyncResult result) {
             return base.Channel.EndConsulta(result);
         }
         
@@ -318,7 +318,7 @@ namespace FactoriesCreator.CustomerServiceReference {
         }
         
         private object[] OnEndConsulta(System.IAsyncResult result) {
-            System.Collections.ObjectModel.ObservableCollection<string> retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndConsulta(result);
+            System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndConsulta(result);
             return new object[] {
                     retVal};
         }
@@ -354,7 +354,7 @@ namespace FactoriesCreator.CustomerServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Collections.ObjectModel.ObservableCollection<string> FactoriesCreator.CustomerServiceReference.CustomerService.EndSelect(System.IAsyncResult result) {
+        System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> FactoriesCreator.CustomerServiceReference.CustomerService.EndSelect(System.IAsyncResult result) {
             return base.Channel.EndSelect(result);
         }
         
@@ -363,7 +363,7 @@ namespace FactoriesCreator.CustomerServiceReference {
         }
         
         private object[] OnEndSelect(System.IAsyncResult result) {
-            System.Collections.ObjectModel.ObservableCollection<string> retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndSelect(result);
+            System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> retVal = ((FactoriesCreator.CustomerServiceReference.CustomerService)(this)).EndSelect(result);
             return new object[] {
                     retVal};
         }
@@ -500,9 +500,9 @@ namespace FactoriesCreator.CustomerServiceReference {
                 return _result;
             }
             
-            public System.Collections.ObjectModel.ObservableCollection<string> EndConsulta(System.IAsyncResult result) {
+            public System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> EndConsulta(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                System.Collections.ObjectModel.ObservableCollection<string> _result = ((System.Collections.ObjectModel.ObservableCollection<string>)(base.EndInvoke("Consulta", _args, result)));
+                System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> _result = ((System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>>)(base.EndInvoke("Consulta", _args, result)));
                 return _result;
             }
             
@@ -512,9 +512,9 @@ namespace FactoriesCreator.CustomerServiceReference {
                 return _result;
             }
             
-            public System.Collections.ObjectModel.ObservableCollection<string> EndSelect(System.IAsyncResult result) {
+            public System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> EndSelect(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                System.Collections.ObjectModel.ObservableCollection<string> _result = ((System.Collections.ObjectModel.ObservableCollection<string>)(base.EndInvoke("Select", _args, result)));
+                System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>> _result = ((System.Collections.ObjectModel.ObservableCollection<System.Collections.Generic.Dictionary<string, object>>)(base.EndInvoke("Select", _args, result)));
                 return _result;
             }
         }
